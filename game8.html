@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Sort Puzzle - Dark Mode</title>
+    <link rel="stylesheet" href="game8.css">
+    <a href="index.html" class="home-button">Home</a>
+
+</head>
+<body>
+    <h1>Water Sort Puzzle Game</h1>
+    <div class="game-container">
+        <!-- Bottles for the game -->
+        <div class="bottle" onclick="selectBottle(0)">
+            <div class="layer color1"></div>
+            <div class="layer color2"></div>
+            <div class="layer color3"></div>
+            <div class="layer color1"></div>
+        </div>
+        <div class="bottle" onclick="selectBottle(1)">
+            <div class="layer color2"></div>
+            <div class="layer color1"></div>
+            <div class="layer color3"></div>
+            <div class="layer color3"></div>
+        </div>
+        <div class="bottle" onclick="selectBottle(2)">
+            <div class="layer color1"></div>
+            <div class="layer color2"></div>
+        </div>
+        <div class="bottle empty" onclick="selectBottle(3)"></div>
+    </div>
+    <button id="restartButton" onclick="restartGame()">Restart Game</button>
+    <script src="game8.js"></script>
+</body>
+</html>

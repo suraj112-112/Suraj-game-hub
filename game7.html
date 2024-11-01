@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <link rel="stylesheet" href="game7.css">
+    <a href="index.html" class="home-button">Home</a>
+
+</head>
+<body>
+    <h1>Tic-Tac-Toe Game</h1>
+    <div class="game-board">
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+    </div>
+    <p id="winnerMessage"></p>
+    <button id="restartButton">Restart Game</button>
+    
+    <!-- Celebration Overlay with animation -->
+    <div id="celebrationOverlay" class="celebration-overlay">
+        <h2 id="celebrationMessage">Congratulations!</h2>
+        <button id="overlayRestartButton">Play Again</button>
+    </div>
+    <script src="game7.js"></script>
+</body>
+</html>

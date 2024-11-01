@@ -1,0 +1,94 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+/* Home Button Styling */
+.home-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.home-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+h1 {
+    color: #ffcc00;
+}
+
+.game-container {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.bottle {
+    width: 80px;
+    height: 250px;
+    border: 3px solid #333;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #333;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.bottle:hover {
+    transform: scale(1.1);
+}
+
+.layer {
+    width: 100%;
+    height: 20%;
+}
+
+.color1 { background-color: #FF6F91; }
+.color2 { background-color: #845EC2; }
+.color3 { background-color: #FFC75F; }
+.color4 { background-color: #00C9A7; }
+
+/* Empty bottle styling */
+.bottle.empty {
+    background-color: transparent;
+    border-style: dashed;
+}
+
+.bottle.selected {
+    outline: 3px solid #ffcc00;
+}
+
+#restartButton {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 18px;
+    background-color: #ffcc00;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#restartButton:hover {
+    background-color: #ffaa00;
+}

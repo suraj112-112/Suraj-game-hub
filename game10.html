@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Finder Game</title>
+    <link rel="stylesheet" href="game10.css">
+    <a href="index.html" class="home-button">Home</a>
+
+</head>
+<body>
+    <h1>Word Finder Game</h1>
+    <label for="levelSelect">Select Level:</label>
+    <select id="levelSelect" onchange="initGame()">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+    </select>
+    <div class="game-container">
+        <div id="grid" class="grid"></div>
+        <div class="word-list" id="wordList"></div>
+    </div>
+    <button id="resetButton" onclick="resetGame()">Reset Game</button>
+    <div id="message"></div>
+    <script src="game10.js"></script>
+</body>
+</html>

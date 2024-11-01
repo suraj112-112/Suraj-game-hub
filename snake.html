@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Game</title>
+  <a href="index.html" class="home-button">Home</a>
+  <style>
+    /* Home Button Styling */
+.home-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.home-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+  </style>
+
+  <style>
+    #game-board {
+      width: 400px;
+      height: 400px;
+      border: 1px solid #000;
+    }
+
+    #score {
+      font-size: 16px;
+      font-family: Arial;
+      margin-bottom: 10px;
+    }
+
+    .button-container {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Snake Game</h1>
+  <div id="score">Score: 0</div>
+  <canvas id="game-board"></canvas>
+  <div class="button-container">
+    <button onclick="restartGame()">Restart</button>
+    <input type="color" id="background-color" onchange="changeBackgroundColor()" value="#ffffff">
+  </div>
+
+  <script>
+    // Game variables
+    var canvasSize = 20;  // Size of each block in the grid
+    var boardSize = 20;   // Number of blocks in the grid
+    var snake = [{ x: 10, y: 10 }];  // Initial snake position
+    var direction = 'right';  // Initial snake direction
+    var food = {};  // Food position
+    var score = 0;  // Initial score
+
+    var gameBoard = document.getElementById('game-board');
+    var ctx = gameBoard.getContext('2d');
+    var scoreElement = document.getElementById('score');
+    var backgroundColorElement = document.getElementById('background-color');
+
+    function drawSnake() {
+      // Clear the canvas
+      ctx.clearRect(0, 0, gameBoard.width, gameBoard.height);
+
+      // Draw each segment of the snake
+      snake.forEach(function (segment) {
+        ctx.fillStyle = '#000';
+        ctx.fillRect(segment.x * canvasSize, segment.y * canvasSize, canvasSize, canvasSize);
+      });
+    }
+
+    function moveSnake() {
+      // Create a new head for the snake in the direction of movement
+      var head = Object.assign({}, snake[0]);
+      switch (direction) {
+        case 'up':
+          head.y--;
+          break;
+        case 'down':
+          head.y++;
+          break;
+        case 'left':
+          head.x--;
+          break;
+        case 'right':
+          head.x++;
+          break;
+      }
+
+      // Check if the snake goes out of bounds
+      if (
+        head.x < 0 ||
+        head.x >= boardSize ||
+        head.y < 0 ||
+        head.y >= boardSize ||
+        checkCollision(head)
+      ) {
+        // Game over
+        endGame();
+        return;
+      }
+
+      // Add the new head to the snake
+      snake.unshift(head);
+
+      // Check if the snake has eaten the food
+      if (head.x === food.x && head.y === food.y) {
+        // Generate new food position
+        food.x = Math.floor(Math.random() * boardSize);
+        food.y = Math.floor(Math.random() * boardSize);
+
+        // Increase the score
+        score += 10;
+        scoreElement.textContent = 'Score: ' + score;
+      } else {
+        // Remove the tail segment
+        snake.pop();
+      }
+    }
+
+    function checkCollision(head) {
+      // Check if the snake collides with itself
+      for (var i = 1; i < snake.length; i++) {
+        if (head.x === snake[i].x && head.y === snake[i].y) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function drawFood() {
+      ctx.fillStyle = 'red';
+      ctx.fillRect(food.x * canvasSize, food.y * canvasSize, canvasSize, canvasSize);
+    }
+
+    function drawScore() {
+      ctx.fillStyle = '#000';
+      ctx.font = '16px Arial';
+      ctx.fillText('Score: ' + score, 10, 20);
+    }
+
+    function endGame() {
+      // Display the final score
+      ctx.fillStyle = '#000';
+      ctx.font = '24px Arial';
+      ctx.fillText('Game Over', gameBoard.width / 2 - 60, gameBoard.height / 2 - 10);
+      ctx.font = '16px Arial';
+      ctx.fillText('Final Score: ' + score, gameBoard.width / 2 - 50, gameBoard.height / 2 + 10);
+    }
+
+    function changeDirection(event) {
+      // Update the direction based on arrow key input
+      var key = event.keyCode || event.which;
+      switch (key) {
+        case 38: // Up arrow
+          if (direction !== 'down') {
+            direction = 'up';
+          }
+          break;
+        case 40: // Down arrow
+          if (direction !== 'up') {
+            direction = 'down';
+          }
+          break;
+        case 37: // Left arrow
+          if (direction !== 'right') {
+            direction = 'left';
+          }
+          break;
+        case 39: // Right arrow
+          if (direction !== 'left') {
+            direction = 'right';
+          }
+          break;
+      }
+    }
+
+    function gameLoop() {
+      drawSnake();
+      drawFood();
+      drawScore();
+      moveSnake();
+      setTimeout(gameLoop, 200); // Adjust the speed of the snake here
+    }
+
+    function restartGame() {
+      // Reset game variables
+      snake = [{ x: 10, y: 10 }];
+      direction = 'right';
+      food.x = Math.floor(Math.random() * boardSize);
+      food.y = Math.floor(Math.random() * boardSize);
+      score = 0;
+      scoreElement.textContent = 'Score: ' + score;
+
+      // Clear the canvas
+      ctx.clearRect(0, 0, gameBoard.width, gameBoard.height);
+
+      // Start the game loop
+      gameLoop();
+    }
+
+    function changeBackgroundColor() {
+      var color = backgroundColorElement.value;
+      gameBoard.style.backgroundColor = color;
+    }
+
+    // Initialize the game
+    function initGame() {
+      // Set up the canvas size
+      gameBoard.width = canvasSize * boardSize;
+      gameBoard.height = canvasSize * boardSize;
+
+      // Set up initial food position
+      food.x = Math.floor(Math.random() * boardSize);
+      food.y = Math.floor(Math.random() * boardSize);
+
+      // Start the game loop
+      gameLoop();
+
+      // Listen for arrow key input
+      document.addEventListener('keydown', changeDirection);
+    }
+
+    // Start the game
+    initGame();
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+/* Home Button Styling */
+.home-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.home-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+}

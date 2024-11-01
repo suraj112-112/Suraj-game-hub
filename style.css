@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+.game-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.game-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.game-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.game-item h2 {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.game-item button {
+    background-color: #28a745;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.game-item button:hover {
+    background-color: #218838;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: #f1f1f1;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.footer h2 {
+    font-size: 24px;
+    color: #fff;
+}
+
+.footer p {
+    font-size: 16px;
+    color: #d3d3d3;
+    margin: 15px 0;
+}
+
+.social-links {
+    margin: 20px 0;
+}
+
+.social-icon {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #d3d3d3;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
